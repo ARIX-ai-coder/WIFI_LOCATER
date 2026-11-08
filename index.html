@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WiFi Locator | Network Explorer</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+</head>
+
+<body>
+
+    <header>
+        <h1>WiFi Locator</h1>
+        <p>Live Network Explorer</p>
+    </header>
+
+    <main class="dashboard">
+
+        <section class="card">
+            <h2>My Device</h2>
+            <p id="deviceStatus">Location not detected</p>
+            <button id="locationBtn">Detect My Location</button>
+            <p id="coordinates">Coordinates: --</p>
+        </section>
+
+        <section class="card">
+            <h2>WiFi Information</h2>
+            <p>Connection: <span id="wifiStatus">Not available</span></p>
+            <p>Network name: Browser restricted</p>
+            <p>Router location: Not verified</p>
+        </section>
+
+        <section class="card">
+            <h2>Distance Calculator</h2>
+            <p id="distance">Distance: --</p>
+            <p>Requires verified router coordinates.</p>
+        </section>
+
+        <section class="card">
+            <h2>Live Location</h2>
+            <div id="map">
+                Map will appear here
+            </div>
+        </section>
+
+    </main>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
