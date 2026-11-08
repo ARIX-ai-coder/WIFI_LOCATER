@@ -39,6 +39,7 @@ const locationBtn = document.getElementById("locationBtn");
 
 let map = null;
 let userMarker = null;
+let sharedMarker = null;
 
 locationBtn.addEventListener("click", () => {
 
@@ -276,6 +277,51 @@ document.getElementById("joinSharingBtn")
 
             navigator.geolocation.getCurrentPosition(
                 (position) => {
+                    // Create map if it does not exist
+if (!map) {
+    map = L.map("map").setView(
+        [position.coords.latitude, position.coords.longitude],
+        14
+    );
+
+    L.tileLayer(
+        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        {
+            attribution: "&copy; OpenStreetMap contributors"
+        }
+    ).addTo(map);
+}
+
+// Current device marker
+if (userMarker) {
+    userMarker.setLatLng([
+        position.coords.latitude,
+        position.coords.longitude
+    ]);
+} else {
+    userMarker = L.marker([
+        position.coords.latitude,
+        position.coords.longitude
+    ]).addTo(map);
+}
+
+userMarker.bindPopup("Your Device");
+
+// Shared device marker
+if (sharedMarker) {
+    sharedMarker.setLatLng([shared.lat, shared.lng]);
+} else {
+    sharedMarker = L.marker([shared.lat, shared.lng])
+        .addTo(map);
+}
+
+sharedMarker.bindPopup("Shared Device");
+
+// Show both markers
+map.fitBounds(
+    L.featureGroup([userMarker, sharedMarker]).getBounds(),
+    { padding: [40, 40] }
+);
                     const distance = calculateDistance(
                         position.coords.latitude,
                         position.coords.longitude,
