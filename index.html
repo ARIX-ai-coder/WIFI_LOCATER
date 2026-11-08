@@ -47,9 +47,35 @@
                 Map will appear here
             </div>
         </section>
+<section class="card">
+    <h2>📡 Share My Location</h2>
+    <p>Apni location trusted person ke saath share karo.</p>
 
+    <button id="startSharingBtn">Start Sharing</button>
+
+    <p id="shareStatus">Not sharing</p>
+    <p id="shareCode">Sharing Code: --</p>
+
+    <button id="stopSharingBtn" disabled>Stop Sharing</button>
+</section>
+
+<section class="card">
+    <h2>🌍 Join Location Sharing</h2>
+    <p>Enter sharing code.</p>
+
+    <input
+        type="text"
+        id="joinCodeInput"
+        placeholder="Enter sharing code"
+    >
+
+    <button id="joinSharingBtn">Find Location</button>
+
+    <p id="joinStatus">Waiting for sharing code</p>
+    <p id="sharedDistance">Distance: --</p>
+</section>
     </main>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
